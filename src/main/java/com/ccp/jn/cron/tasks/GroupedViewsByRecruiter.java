@@ -1,4 +1,4 @@
-package com.ccp.jn.cron;
+package com.ccp.jn.cron.tasks;
 
 public class GroupedViewsByRecruiter {
 
