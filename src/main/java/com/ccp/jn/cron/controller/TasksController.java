@@ -12,7 +12,7 @@ import com.ccp.implementations.http.apache.mime.Http;
 import com.ccp.implementations.instant.messenger.telegram.InstantMessenger;
 import com.ccp.jn.cron.tasks.GenericTask;
 import com.ccp.process.CcpProcess;
-import com.jn.commons.JnBusinessEntity;
+import com.jn.commons.JnEntity;
 
 public class TasksController {
 	@SuppressWarnings("unchecked")
@@ -28,7 +28,7 @@ public class TasksController {
 				new Bulk(),
 				new Crud()
 		);
-		JnBusinessEntity.loadEntitiesMetadata();
+		JnEntity.loadEntitiesMetadata();
 		String taskName = args[0];
 		Class<CcpProcess> forName = (Class<CcpProcess>) Class.forName(GenericTask.class.getPackage().getName() + "." + taskName);
 		CcpProcess injected = CcpDependencyInjection.getInjected(forName);
