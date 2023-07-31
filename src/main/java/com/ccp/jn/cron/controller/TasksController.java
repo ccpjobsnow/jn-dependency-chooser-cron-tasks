@@ -3,7 +3,7 @@ package com.ccp.jn.cron.controller;
 import com.ccp.decorators.CcpMapDecorator;
 import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.implementations.db.bulk.elasticsearch.Bulk;
-import com.ccp.implementations.db.crud.elasticsearch.Crud;
+import com.ccp.implementations.db.dao.elasticsearch.Dao;
 import com.ccp.implementations.db.utils.elasticsearch.DbUtils;
 import com.ccp.implementations.db.utils.elasticsearch.Query;
 import com.ccp.implementations.emails.sendgrid.Email;
@@ -26,7 +26,7 @@ public class TasksController {
 				new Query(),
 				new Http(),
 				new Bulk(),
-				new Crud()
+				new Dao()
 		);
 		JnEntity.loadEntitiesMetadata();
 		String taskName = args[0];
