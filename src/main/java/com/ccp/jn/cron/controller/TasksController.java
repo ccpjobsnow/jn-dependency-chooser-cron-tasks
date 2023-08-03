@@ -1,5 +1,7 @@
 package com.ccp.jn.cron.controller;
 
+import java.util.function.Function;
+
 import com.ccp.decorators.CcpMapDecorator;
 import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.implementations.db.bulk.elasticsearch.Bulk;
@@ -11,7 +13,6 @@ import com.ccp.implementations.file.bucket.gcp.FileBucket;
 import com.ccp.implementations.http.apache.mime.Http;
 import com.ccp.implementations.instant.messenger.telegram.InstantMessenger;
 import com.ccp.jn.cron.tasks.GenericTask;
-import com.ccp.process.CcpProcess;
 import com.jn.commons.JnEntity;
 
 public class TasksController {
@@ -30,10 +31,10 @@ public class TasksController {
 		);
 		JnEntity.loadEntitiesMetadata();
 		String taskName = args[0];
-		Class<CcpProcess> forName = (Class<CcpProcess>) Class.forName(GenericTask.class.getPackage().getName() + "." + taskName);
-		CcpProcess injected = CcpDependencyInjection.getInjected(forName);
+		Class<Function<CcpMapDecorator, CcpMapDecorator>> forName = (Class<Function<CcpMapDecorator, CcpMapDecorator>>) Class.forName(GenericTask.class.getPackage().getName() + "." + taskName);
+		Function<CcpMapDecorator, CcpMapDecorator> injected = CcpDependencyInjection.getInjected(forName);
 		String parameters = args[1];
 		CcpMapDecorator mdParameters = new CcpMapDecorator(parameters);
-		injected.execute(mdParameters);
+		injected.apply(mdParameters);
 	}
 }
