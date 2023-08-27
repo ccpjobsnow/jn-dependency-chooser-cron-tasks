@@ -3,7 +3,7 @@ package com.ccp.jn.cron.controller;
 import java.util.function.Function;
 
 import com.ccp.decorators.CcpMapDecorator;
-import com.ccp.dependency.injection.CcpInstanceInjection;
+import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.implementations.db.bulk.elasticsearch.Bulk;
 import com.ccp.implementations.db.dao.elasticsearch.Dao;
 import com.ccp.implementations.db.utils.elasticsearch.DbUtils;
@@ -18,7 +18,7 @@ import com.ccp.jn.cron.tasks.GenericTask;
 public class TasksController {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws Exception {
-		CcpInstanceInjection.loadAllInstances
+		CcpDependencyInjection.loadAllDependencies
 		(
 				new InstantMessenger(),
 				new JsonHandler(),
