@@ -1,5 +1,5 @@
 package com.ccp.jn.cron.tasks;
 
-public class RecruitersDomains {
+public class JnCronTaskUserStats {
 
 }
