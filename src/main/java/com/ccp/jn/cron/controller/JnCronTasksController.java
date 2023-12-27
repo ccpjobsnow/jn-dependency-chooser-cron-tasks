@@ -32,7 +32,7 @@ public class JnCronTasksController {
 		);
 		String taskName = args[0];
 		Class<Function<CcpMapDecorator, CcpMapDecorator>> forName = (Class<Function<CcpMapDecorator, CcpMapDecorator>>) Class.forName(JnGenericCronTask.class.getPackage().getName() + "." + taskName);
-		Function<CcpMapDecorator, CcpMapDecorator> injected = forName.newInstance();
+		Function<CcpMapDecorator, CcpMapDecorator> injected = forName.getDeclaredConstructor().newInstance();
 		String parameters = args[1];
 		CcpMapDecorator mdParameters = new CcpMapDecorator(parameters);
 		injected.apply(mdParameters);
