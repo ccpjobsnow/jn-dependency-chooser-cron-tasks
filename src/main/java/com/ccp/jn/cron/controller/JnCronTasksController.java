@@ -2,7 +2,7 @@ package com.ccp.jn.cron.controller;
 
 import java.util.function.Function;
 
-import com.ccp.decorators.CcpMapDecorator;
+import com.ccp.decorators.CcpJsonRepresentation;
 import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.implementations.db.bulk.elasticsearch.CcpElasticSerchDbBulk;
 import com.ccp.implementations.db.dao.elasticsearch.CcpElasticSearchDao;
@@ -31,10 +31,10 @@ public class JnCronTasksController {
 				new CcpElasticSearchDao()
 		);
 		String taskName = args[0];
-		Class<Function<CcpMapDecorator, CcpMapDecorator>> forName = (Class<Function<CcpMapDecorator, CcpMapDecorator>>) Class.forName(JnGenericCronTask.class.getPackage().getName() + "." + taskName);
-		Function<CcpMapDecorator, CcpMapDecorator> injected = forName.getDeclaredConstructor().newInstance();
+		Class<Function<CcpJsonRepresentation, CcpJsonRepresentation>> forName = (Class<Function<CcpJsonRepresentation, CcpJsonRepresentation>>) Class.forName(JnGenericCronTask.class.getPackage().getName() + "." + taskName);
+		Function<CcpJsonRepresentation, CcpJsonRepresentation> injected = forName.getDeclaredConstructor().newInstance();
 		String parameters = args[1];
-		CcpMapDecorator mdParameters = new CcpMapDecorator(parameters);
+		CcpJsonRepresentation mdParameters = new CcpJsonRepresentation(parameters);
 		injected.apply(mdParameters);
 	}
 }
