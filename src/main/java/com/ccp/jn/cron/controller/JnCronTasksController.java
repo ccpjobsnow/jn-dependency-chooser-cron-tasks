@@ -10,8 +10,8 @@ import com.ccp.implementations.file.bucket.gcp.CcpGcpFileBucket;
 import com.ccp.implementations.http.apache.mime.CcpApacheMimeHttp;
 import com.ccp.implementations.instant.messenger.telegram.CcpTelegramInstantMessenger;
 import com.ccp.implementations.json.gson.CcpGsonJsonHandler;
-import com.ccp.jn.async.business.JnAsyncBusinessNotifyError;
 import com.ccp.jn.async.business.factory.CcpJnAsyncBusinessFactory;
+import com.ccp.jn.async.business.support.JnAsyncBusinessNotifyError;
 
 public class JnCronTasksController {
 	public static void main(String[] args) throws Exception {
@@ -28,10 +28,9 @@ public class JnCronTasksController {
 				new CcpApacheMimeHttp(),
 				new CcpGcpFileBucket()
 		);
-		
-		JnAsyncBusinessNotifyError jnAsyncBusinessNotifyError = new JnAsyncBusinessNotifyError();
-		String parameters = args[1];
 		String taskName = args[0];
-		CcpCronTasksController.main(jnAsyncBusinessNotifyError, taskName, parameters);
+		String parameters = args[1];
+		
+		CcpCronTasksController.main(JnAsyncBusinessNotifyError.INSTANCE, taskName, parameters);
 	}
 }
