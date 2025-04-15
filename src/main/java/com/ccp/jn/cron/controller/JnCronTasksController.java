@@ -10,7 +10,7 @@ import com.ccp.implementations.file.bucket.gcp.CcpGcpFileBucket;
 import com.ccp.implementations.http.apache.mime.CcpApacheMimeHttp;
 import com.ccp.implementations.instant.messenger.telegram.CcpTelegramInstantMessenger;
 import com.ccp.implementations.json.gson.CcpGsonJsonHandler;
-import com.jn.business.JnBusinessNotifyError;
+import com.jn.business.commons.JnBusinessNotifyError;
 
 public class JnCronTasksController {
 	public static void main(String[] args) throws Exception {
